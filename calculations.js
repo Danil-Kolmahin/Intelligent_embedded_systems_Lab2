@@ -1,0 +1,1 @@
+const func1 = (x) => 0.05 * x

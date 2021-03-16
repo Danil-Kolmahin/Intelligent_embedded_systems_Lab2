@@ -6,8 +6,16 @@ const writeDescription = (text) => {
     end.before(document.createElement('br'))
 }
 
-writeDescription('someFunc')
+writeDescription('discreteFourierTransformation')
 end.before(new Lab1Graph(document.createElement('canvas')).drawFunction({
-    f: func1, dotty: false,
-    finishX: 31,
+    f: DFTFunc, dotty: false,
+    startX: 1,
+    finishX: 89,
+}).getCanvas())
+
+writeDescription('quickDiscreteFourierTransformation')
+end.before(new Lab1Graph(document.createElement('canvas')).drawFunction({
+    f: quickDFTFunc, dotty: false,
+    startX: 1,
+    finishX: 89,
 }).getCanvas())

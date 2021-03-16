@@ -250,17 +250,17 @@ class MyContext {
 class Lab1Graph extends MyContext {
     constructor(canvas) {
         const options = {
-            width: 1300,
-            height: 200,
+            width: 1000,
+            height: 700,
             borderOptions: {
                 before: (ctx) => ctx.strokeStyle = 'green',
                 after: (ctx) => ctx.strokeStyle = 'black',
             },
             withMarkup: {
-                everyY: 40,
-                everyX: 40,
+                everyY: 10,
+                everyX: 10,
             },
-            shiftY: -2,
+            // shiftY: -2,
             arrowsOptions: {
                 beforeArrows: (ctx) => ctx.strokeStyle = 'green',
                 afterArrows: (ctx) => ctx.strokeStyle = 'black',

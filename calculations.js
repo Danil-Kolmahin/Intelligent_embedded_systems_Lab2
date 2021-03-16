@@ -1,25 +1,17 @@
 const discreteFourierTransformation = arrayX => {
     if (arrayX.length % 2 !== 0) arrayX.pop()
     const N = arrayX.length
-    const tableW = []
-
-    for (let i = 0; i < N / 2; i++) {
-        const arg = -2 * Math.PI * i / N
-        const sin = Math.sin(arg)
-        const cos = Math.cos(arg)
-        tableW[i] = [cos, sin]
-        tableW[i + N / 2] = [-cos, -sin]
-    }
-
     const result = []
-    for (let p = 0; p < N; p++) {
+
+    arrayX.forEach((_, p) => {
         let realF = 0, imageF = 0
         for (let k = 0; k < N; k++) {
-            realF += arrayX[k] * tableW[p * k % N][0]
-            imageF += arrayX[k] * tableW[p * k % N][1]
+            const arg = -2 * Math.PI * (p * k % N) / N
+            realF += arrayX[k] * Math.cos(arg)
+            imageF += arrayX[k] * Math.sin(arg)
         }
         result[p] = Math.sqrt(realF ** 2 + imageF ** 2)
-    }
+    })
 
     return result
 }
@@ -27,24 +19,17 @@ const discreteFourierTransformation = arrayX => {
 const quickDiscreteFourierTransformation = arrayX => {
     if (arrayX.length % 2 !== 0) arrayX.pop()
     const N = arrayX.length
-    const tableW = []
-
-    for (let i = 0; i < N / 2; i++) {
-        const arg = -2 * Math.PI * i / N
-        const sin = Math.sin(arg)
-        const cos = Math.cos(arg)
-        tableW[i] = [cos, sin]
-        tableW[i + N / 2] = [-cos, -sin]
-    }
-
     const result = []
+
     for (let p = 0; p <= N / 2; p++) {
         let realF = 0, imageF = 0
         for (let k = 0; k < N / 2; k++) {
-            realF += arrayX[k] * tableW[p * k % N][0]
-            realF += arrayX[N / 2 + k] * tableW[p * (N / 2 + k) % N][0]
-            imageF += arrayX[k] * tableW[p * k % N][1]
-            imageF += arrayX[N / 2 + k] * tableW[p * (N / 2 + k) % N][1]
+            let arg = -2 * Math.PI * (p * k % N) / N
+            realF += arrayX[k] * Math.cos(arg)
+            imageF += arrayX[k] * Math.sin(arg)
+            arg = -2 * Math.PI * (p * (N / 2 + k) % N) / N
+            realF += arrayX[N / 2 + k] * Math.cos(arg)
+            imageF += arrayX[N / 2 + k] * Math.sin(arg)
         }
         if (p === N / 2) {
             result[p] = Math.sqrt(realF ** 2 + imageF ** 2)

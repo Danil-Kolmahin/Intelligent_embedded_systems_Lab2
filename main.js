@@ -9,6 +9,7 @@ const writeDescription = (text) => {
 	end.before(document.createElement('br'))
 }
 
+
 writeDescription('discreteFourierTransformation')
 end.before(new Lab1Graph(document.createElement('canvas')).drawFunction({
 	f: DFTFunc, dotty: false,

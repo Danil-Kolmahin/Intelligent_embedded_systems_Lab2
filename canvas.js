@@ -247,6 +247,7 @@ class MyContext {
     }
 }
 
+
 export class Lab1Graph extends MyContext {
 	constructor(canvas) {
 		const options = {

@@ -46,6 +46,7 @@ const quickDiscreteFourierTransformation = arrayX => {
 	return result
 }
 
+
 const findDifference = (func1, func2, startX = 0, finishX = 100) => {
 	const result = []
 	const func1Res = func1(defaultArray)

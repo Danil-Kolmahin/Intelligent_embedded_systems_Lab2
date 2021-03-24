@@ -1,5 +1,6 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
+
 module.exports = {
 	entry: {
 		main: ['@babel/polyfill', './main.js',],
